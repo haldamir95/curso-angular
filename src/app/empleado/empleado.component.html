@@ -2,14 +2,98 @@ ________________________________________________________________________________
 <h3> {{ titulo_empleado }} </h3>
 
 <strong>Empleados Estrella: </strong>
+Mostrar variable empleado <br>
 <ul>
     <li>{{empleado.nombre}}</li>
     <li>{{empleado.edad}}</li>
     <li>{{empleado.cargo}}</li>
     <li>{{empleado.contratado}}</li>
-
+</ul>
+Mostrar arreglo de trabajadores 
+<br>
+<ul>
     <li>{{trabajadores[0].nombre}}</li>
     <li>{{trabajadores[0].edad}}</li>
     <li>{{trabajadores[0].cargo}}</li>
     <li>{{trabajadores[0].contratado}}</li>
+
 </ul>
+Utilizando Directiva Ngif
+<br>
+<div *ngIf="trabajadorExterno == true">
+<button (click)="cambiarExterno(false)">Mostrar empleado</button>
+<ul>
+    <li>{{empleado.nombre}}</li>
+    <li>{{empleado.edad}}</li>
+    <li>{{empleado.cargo}}</li>
+    <li *ngIf="empleado.contratado == true">Esta contratado</li>
+    <li *ngIf="empleado.contratado == false">No esta contratado</li>
+</ul>
+</div>
+<div *ngIf="trabajadorExterno == false">
+<button (click)="cambiarExterno(true)">Mostrar trabajador</button>
+<ul>
+    <li>{{trabajadores[1].nombre}}</li>
+    <li>{{trabajadores[1].edad}}</li>
+    <li>{{trabajadores[1].cargo}}</li>
+    <li *ngIf="trabajadores[1].contratado == true">Esta contratado</li>
+    <li *ngIf="trabajadores[1].contratado == false">No esta contratado</li>
+</ul>
+</div>
+<br>
+Utilizando Directiva ngFor
+<h3>Listado de Empleados</h3>
+<ul>
+    <li *ngFor="let empleado of trabajadores; let i = index;">
+        Empleado {{ i }}: 
+        <ul>
+            <li>{{empleado.nombre}}</li>
+            <li>{{empleado.edad}}</li>
+            <li>{{empleado.cargo}}</li>
+            <li *ngIf="empleado.contratado == true">Esta contratado</li>
+            <li *ngIf="empleado.contratado == false">No esta contratado</li>
+        </ul>
+    </li>
+</ul>
+<hr>
+Utilizando Directiva ngSwitch
+<h3>Colores Switch</h3>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]="{
+        'background':color, 
+        'color':'white',
+        'padding':'20px'
+    }">Es de color rojo</li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{
+        'background':color, 
+        'color':'white',
+        'padding':'20px'
+    }">Es de color verde</li>
+</ul>
+<hr>
+Utilizando Directiva ngModel two way data-binding y Directivas style, class, ngClass
+<h3>Selector de Colores</h3>
+<input type="text" [(ngModel)]="colorSeleccionado"/>
+<pre 
+    [style.border]="colorSeleccionado=='red' ? '5px solid black' : '1px solid green'" 
+    [class.bordeAzul]="colorSeleccionado=='blue'"
+    [ngClass]="{
+        fondoAzul: colorSeleccionado == 'blue',
+        fondoVerde: colorSeleccionado == 'green',
+        letraGrande: 1==1
+    }"
+>
+    <strong>Color elegido</strong>
+    {{colorSeleccionado}}
+</pre>
+<div [ngStyle]="{
+    'background':colorSeleccionado, 
+    'width':'200px',
+    'height':'200px',
+    'float': 'right',
+    'margin-right':'55%'
+}">
+<div style="clear:both">
+
+</div>
+</div>

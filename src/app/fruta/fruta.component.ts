@@ -55,6 +55,6 @@ export class FrutaComponent {
 
     holamundo(nombre:string){
         nombre = "Guzman";
-        alert("Hola Mundo "+nombre);
+        //alert("Hola Mundo "+nombre);
     }
 }

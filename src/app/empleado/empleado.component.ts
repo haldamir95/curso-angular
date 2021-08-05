@@ -17,6 +17,10 @@ export class EmpleadoComponente{
     //Creando un arreglo de empleados
     public trabajadores:Array<Empleado>;
 
+    public trabajadorExterno:boolean;
+    public color:string;
+    public colorSeleccionado:string;
+
     constructor(){
         //Asignando valores a los atributos del empleado utilizando el constructor.
         this.empleado = new Empleado("Alan Guzman",26,"desarrollador",true);
@@ -24,9 +28,14 @@ export class EmpleadoComponente{
 
         //Agregar empleados nuevos al arreglo de trabajadores
         this.trabajadores = [
-            new Empleado("Melissa Sanchez",26,"disenadora",true),
-            new Empleado("Mushu Iguana",2,"mascota",true)
+            new Empleado("Melissa Sanchez",26,"disenadora",true),//0
+            new Empleado("Mushu Iguana",2,"mascota",false),//1
+            new Empleado("Andrea Lopez",50,"cocinera",false)//2
         ];
+
+        this.trabajadorExterno = false;
+        this.color = "green";
+        this.colorSeleccionado = "#ccc";
     }
 
     ngOnInit(){
@@ -35,5 +44,9 @@ export class EmpleadoComponente{
 
         //mostrar listado de trabajodres en la consola del explorador
         console.log(this.trabajadores);
+    }
+
+    cambiarExterno(valor:boolean){
+        this.trabajadorExterno = valor;
     }
 }

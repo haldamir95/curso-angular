@@ -1,0 +1,20 @@
+.bordeAzul{
+    border: 5px solid lightblue !important;
+}
+
+.fondoAzul{
+    background: lightblue !important;
+}
+
+.fondoVerde{
+    background: lightgreen !important;
+}
+
+.letraGrande{
+    font-size: 20px;
+}
+
+.linkActivado{
+    font-weight: bold;
+    background: yellow;
+}
