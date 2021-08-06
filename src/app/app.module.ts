@@ -12,6 +12,8 @@ import { HomeComponente } from './home/home.component';
 import { ContactoComponente } from './contacto/contacto.component';
 //para el routing
 import { routing, appRoutingProviders } from './app.routing';
+//para el pipe personalizado
+import { ConversorPipe } from './pipes/conversor..pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { routing, appRoutingProviders } from './app.routing';
     EmpleadoComponente,
     HomeComponente,
     ContactoComponente,
+    ConversorPipe
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,28 @@
 <h2>{{titulo}}</h2>
+<br>
+<h3>Listado de Prendas de Ropa</h3>
+
+
+<input #inputPrenda type="text" [(ngModel)]="prenda_a_guardar"/>
+<button (click)="guardarPrenda(inputPrenda)"> Agregar prenda</button>
+<br>
+<span *ngIf="prenda_a_guardar">La prenda a guardar es: <strong>{{prenda_a_guardar}}</strong></span>
+<ul>
+    <li *ngFor="let prenda of listado_ropa; let i = index">
+        {{i}} {{prenda}} link <button (click)="eliminarPrenda(i)">X</button>
+    </li>
+</ul>
+<br>
+<h4>Fechas pipe</h4>
+<p>Fecha sin pipe: {{fecha }}</p>
+<p>Fecha con pipe date fullDate y pipe uppercase: {{fecha | date:'fullDate' | uppercase | lowercase}}</p>
+<p>Fecha con pipe date dd/MM/yy: {{fecha | date:'dd/MM/yyyy'}}</p>
+<br>
+<h4>Pipe personalizado de multiplicacion</h4>
+<p>Numero sin pipe: {{5}}</p>
+<p>Numero con pipe: {{'5' | conversor: '7'}}</p>
+<!-- 
+    Si el metodo de neustra pipe personalizada tiene muchos parametros
+    se utiliza del siguiente modo
+    {{'5' | conversor: '7' : '8' : '23' : '12'}}
+-->
