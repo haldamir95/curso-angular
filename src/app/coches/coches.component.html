@@ -1,0 +1,60 @@
+<style>
+    div{
+        float: left;
+    }
+    form{
+        width: 200px;
+    }
+    input[type="text"], span{
+        display: block;
+        width: 100%;
+    }
+    .listado{
+        margin-left: 30px;
+    }
+</style>
+
+<h1>Componente de Coches</h1>
+
+<div>
+    <form #formCoche="ngForm" (ngSubmit)="onSubmit(); formCoche.reset();">
+        <label>Nombre: </label>
+        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required>
+        <span *ngIf="nombre.touched && !nombre.valid">
+            El nombre del coche es incorrecto
+        </span>
+        <br>
+        <label>Caballaje: </label>
+        <input type="text" name="caballaje" #caballaje="ngModel" [(ngModel)]="coche.caballaje" required pattern="[0-9]+">
+        <span *ngIf="caballaje.touched && !caballaje.valid">
+            El caballaje del coche es incorrecto
+        </span>
+        <br>
+        <label>Color: </label>
+        <input type="text" name="color" #color="ngModel" [(ngModel)]="coche.color" required pattern="[a-zA-Z#]+">
+        <span *ngIf="color.touched && !color.valid">
+            El color del coche es incorrecto
+        </span>
+        <br>
+        <input type="submit" value="Guardar"  [disabled]="!formCoche.form.valid">
+    </form>
+</div>
+<div class="listado">
+    <h4>Listado de Coches</h4>
+
+    <ul>
+        <li *ngFor="let coche of coches">
+            {{coche.nombre}} - {{coche.caballaje}} - {{coche.color}}
+        </li>
+    </ul>
+</div>
+
+<div class="listado"> 
+    <h3>Listado de Articulos</h3>
+    <ul *ngIf="articulos">
+        <li *ngFor="let articulo of articulos">
+            {{articulo.id}} - {{articulo.title}}
+        </li>
+    </ul>
+    <span *ngIf="!articulos">Cargando...</span>
+</div>
